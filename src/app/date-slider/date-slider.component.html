@@ -1,0 +1,28 @@
+<div class="slider-container">
+  <div class="slider" #slider>
+    <div class="track"></div>
+    <div
+      class="range"
+      [style.left.%]="calculatePercentage(minValue)"
+      [style.width.%]="
+        calculatePercentage(maxValue) - calculatePercentage(minValue)
+      "
+    ></div>
+    <div
+      class="thumb thumb-left"
+      [style.left.%]="calculatePercentage(minValue)"
+      (mousedown)="startDrag($event, 'min')"
+      (touchstart)="startDrag($event, 'min')"
+    >
+      <div class="tooltip tooltip-left">{{ minDate }}</div>
+    </div>
+    <div
+      class="thumb thumb-right"
+      [style.left.%]="calculatePercentage(maxValue)"
+      (mousedown)="startDrag($event, 'max')"
+      (touchstart)="startDrag($event, 'max')"
+    >
+      <div class="tooltip tooltip-right">{{ maxDate }}</div>
+    </div>
+  </div>
+</div>

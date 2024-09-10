@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DateSliderComponent } from './date-slider/date-slider.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [DateSliderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'date-slider-with-bar-chart';
+  minDate: Date = new Date('2020-01-01');
+  maxDate: Date = new Date();
+
+  updateFilter(minDate: Date, maxDate: Date) {
+    this.minDate = minDate;
+    this.maxDate = maxDate;
+  }
 }
