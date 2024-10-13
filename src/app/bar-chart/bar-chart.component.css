@@ -1,0 +1,65 @@
+.chart-wrapper {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  width: 100%; /* Full width of the container */
+}
+
+.bar-chart {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  position: relative; /* For positioning tooltip correctly */
+  max-width: 700px; /* Limit the total width of the chart */
+  width: 100%; /* Make the chart responsive */
+}
+
+.bar-container {
+  flex-grow: 1; /* Make the bars scale to fit the width of the container */
+  margin: 0; /* Space between bars */
+  position: relative; /* For positioning tooltip inside bar container */
+  overflow: visible; /* Ensure the tooltip is visible outside the bar container */
+}
+
+.bar {
+  width: 100%; /* Allow the bar width to be dynamic */
+  text-align: center;
+  transition: height 0.3s, background-color 0.3s;
+}
+
+.bar:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.label {
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: center; /* Ensure label is centered under the bar */
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 60%; /* Position the tooltip just above the bar */
+  left: 50%; /* Center the tooltip horizontally */
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10; /* Ensure tooltip is above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow to the tooltip */
+  text-align: center;
+  pointer-events: none; /* Tooltip itself doesn't interfere with hover events */
+}
+
+.tooltip p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.bar-container:hover .tooltip {
+  display: block;
+}

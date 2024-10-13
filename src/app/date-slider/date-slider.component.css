@@ -1,61 +1,95 @@
+/* Slider styles */
 .slider-container {
-  width: 300px;
-  margin: 50px auto;
+  width: 100%;
+  max-width: 700px; /* Limit the maximum width of the slider */
+  margin: 50px auto; /* Center the slider container */
+  padding: 0 10px; /* Padding on the sides */
+  box-sizing: border-box;
 }
 
 .slider {
   position: relative;
-  width: 100%;
-  height: 6px;
-  background-color: #ddd;
-  margin-top: 20px;
-  user-select: none;
+  width: 100%; /* Full width within its container */
+  height: 6px; /* Height of the slider */
+  background-color: #ddd; /* Background color of the track */
+  margin-top: 20px; /* Space above the slider */
+  user-select: none; /* Prevent text selection while dragging */
 }
 
 .track,
 .range {
-  position: absolute;
-  height: 100%;
-  top: 0;
-  pointer-events: none;
+  position: absolute; /* Position these elements absolutely */
+  height: 100%; /* Full height of the slider */
+  top: 0; /* Align to the top */
 }
 
 .track {
-  width: 100%;
-  background-color: #ddd;
+  width: 100%; /* Full width of the slider */
+  background-color: #ddd; /* Background color of the track */
 }
 
 .range {
-  background-color: #5c60f1;
+  background-color: #5c60f1; /* Color of the range indicator */
 }
 
 .thumb {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background-color: #5c60f1;
-  border-radius: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  z-index: 2;
+  position: absolute; /* Position the thumbs absolutely */
+  width: 16px; /* Width of the thumb */
+  height: 16px; /* Height of the thumb */
+  background-color: #5c60f1; /* Color of the thumb */
+  border-radius: 50%; /* Round shape */
+  top: 50%; /* Center vertically */
+  transform: translate(-50%, -50%); /* Center horizontally */
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 2; /* Above the track */
 }
 
+/* Permanent tooltips */
 .tooltip {
-  position: absolute;
-  background-color: #000000;
-  color: #fff;
-  padding: 3px 6px;
-  border-radius: 4px;
-  font-size: 12px;
-  bottom: -30px;
-  transform: translateX(-50%);
+  position: absolute; /* Position tooltips absolutely */
+  background-color: rgba(0, 0, 0, 0.8); /* Background color */
+  color: #fff; /* Text color */
+  padding: 4px 8px; /* Padding around the text */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 12px; /* Font size */
+  bottom: 125%; /* Position above the thumb */
+  transform: translateX(-50%); /* Center the tooltip */
+  z-index: 1; /* Below the thumbs */
 }
 
-.tooltip-left {
-  left: calc(-50% - 5px);
+/* Date picker styles */
+.date-picker-container {
+  display: flex; /* Display items in a row */
+  align-items: center; /* Center items vertically */
+  gap: 20px; /* Space between items */
+  margin: 20px auto; /* Center the container with auto margins */
+  width: fit-content; /* Set width to fit content for centering */
 }
 
-.tooltip-right {
-  left: calc(50% + 25px);
+/* Center the entire container */
+.date-picker-wrapper {
+  display: flex;
+  justify-content: center; /* Center contents horizontally */
+  width: 100%; /* Full width for centering */
+}
+
+/* Date picker labels */
+.date-picker-container label {
+  font-weight: bold; /* Bold labels */
+}
+
+/* Date inputs */
+.date-picker-container input[type="date"] {
+  padding: 5px; /* Padding for inputs */
+  font-size: 14px; /* Font size */
+  border-radius: 4px; /* Rounded corners */
+  border: 1px solid #ddd; /* Border style */
+}
+
+/* Line between date inputs */
+.line {
+  width: 15px; /* Line width */
+  height: 4px; /* Line height */
+  background-color: #000; /* Line color */
+  align-self: center; /* Center the line vertically */
 }

@@ -1,1 +1,10 @@
-<app-date-slider></app-date-slider>
+<div class="center-container">
+  <div class="bar-slider-container">
+    <app-bar-chart [minDate]="minDate" [maxDate]="maxDate"></app-bar-chart>
+    <app-date-slider
+      (dateRangeChanged)="updateFilter($event.minDate, $event.maxDate)"
+    ></app-date-slider>
+  </div>
+
+  <app-date-table [minDate]="minDate" [maxDate]="maxDate"></app-date-table>
+</div>
