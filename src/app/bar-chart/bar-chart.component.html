@@ -1,6 +1,5 @@
 <div class="chart-wrapper">
   <div class="bar-chart">
-    <div *ngIf="chartData.length === 0">No data to display</div>
     <div *ngFor="let data of chartData" class="bar-container">
       <div
         class="bar"
@@ -12,7 +11,6 @@
       <div class="tooltip" *ngIf="hoveredBar === data">
         <p>{{ data.count > 0 ? data.count + " entries" : "No entries" }}</p>
         <p>{{ getMonthYear(data.month) }}</p>
-        <!-- Display month and year -->
       </div>
     </div>
   </div>

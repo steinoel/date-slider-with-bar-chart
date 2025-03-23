@@ -11,29 +11,22 @@
     ></div>
 
     <div
-      class="thumb thumb-left"
+      class="thumb"
       [style.left.%]="calculatePercentage(minValue)"
       (mousedown)="startDrag($event, 'min')"
       (touchstart)="startDrag($event, 'min')"
     ></div>
     <div
-      class="thumb thumb-right"
+      class="thumb"
       [style.left.%]="calculatePercentage(maxValue)"
       (mousedown)="startDrag($event, 'max')"
       (touchstart)="startDrag($event, 'max')"
     ></div>
 
-    <!-- Permanent tooltips -->
-    <div
-      class="tooltip tooltip-left"
-      [style.left.%]="calculatePercentage(minValue)"
-    >
+    <div class="tooltip" [style.left.%]="calculatePercentage(minValue)">
       {{ minDate }}
     </div>
-    <div
-      class="tooltip tooltip-right"
-      [style.left.%]="calculatePercentage(maxValue)"
-    >
+    <div class="tooltip" [style.left.%]="calculatePercentage(maxValue)">
       {{ maxDate }}
     </div>
   </div>

@@ -13,7 +13,7 @@ export class DateTableComponent implements OnChanges {
   @Input() minDate!: Date;
   @Input() maxDate!: Date;
 
-  filteredData: any[] = []; // Initialize empty array for filtered data
+  filteredData: any[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['minDate'] || changes['maxDate']) {
@@ -30,7 +30,7 @@ export class DateTableComponent implements OnChanges {
         const itemTimestamp = new Date(item.date).getTime();
         return itemTimestamp >= minTimestamp && itemTimestamp <= maxTimestamp;
       })
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // Sort by date, newest first
-      .slice(0, 20); // Show maximum 20 entries
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, 20);
   }
 }

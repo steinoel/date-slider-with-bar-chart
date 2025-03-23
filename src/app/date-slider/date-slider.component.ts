@@ -7,15 +7,15 @@ import {
   EventEmitter,
   OnInit,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
-import { CommonModule } from '@angular/common'; // Import CommonModule for ngIf
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-date-slider',
   standalone: true,
   templateUrl: './date-slider.component.html',
   styleUrls: ['./date-slider.component.css'],
-  imports: [FormsModule, CommonModule], // Add CommonModule to imports
+  imports: [FormsModule, CommonModule],
 })
 export class DateSliderComponent implements OnInit {
   @ViewChild('slider', { static: false }) slider!: ElementRef;
@@ -24,9 +24,8 @@ export class DateSliderComponent implements OnInit {
     maxDate: Date;
   }>();
 
-  // Set initial dates
-  startDate: string = '2020-01-01'; // Start date set to 1st Jan 2020
-  endDate: string = new Date().toISOString().split('T')[0]; // Today's date in 'yyyy-MM-dd' format
+  startDate: string = '2020-01-01';
+  endDate: string = new Date().toISOString().split('T')[0];
   minValue: number = new Date(this.startDate).getTime();
   maxValue: number = this.getMonthEnd(new Date(this.endDate)).getTime();
   dragging: 'min' | 'max' | null = null;
@@ -34,7 +33,7 @@ export class DateSliderComponent implements OnInit {
 
   ngOnInit() {
     this.checkScreenSize();
-    this.logDates(); // Log initial dates
+    this.logDates();
     this.emitDateRange();
   }
 
@@ -126,39 +125,35 @@ export class DateSliderComponent implements OnInit {
     this.dragging = null;
   }
 
-  // Method to update the start date
   updateStartDate(value: string) {
-    this.startDate = value; // Ensure this is a valid date string (yyyy-MM-dd)
-    this.onDateChange(); // Call to update any related logic
+    this.startDate = value;
+    this.onDateChange();
   }
 
-  // Method to update the end date
   updateEndDate(value: string) {
-    this.endDate = value; // Ensure this is a valid date string (yyyy-MM-dd)
-    this.onDateChange(); // Call to update any related logic
+    this.endDate = value;
+    this.onDateChange();
   }
 
-  // Method to handle changes in dates
   onDateChange() {
-    this.validateDates(); // Ensure the dates are valid
-    this.minValue = new Date(this.startDate).getTime(); // Update minValue
-    this.maxValue = new Date(this.endDate).getTime(); // Update maxValue
-    this.emitDateRange(); // Emit updated range
+    this.validateDates();
+    this.minValue = new Date(this.startDate).getTime();
+    this.maxValue = new Date(this.endDate).getTime();
+    this.emitDateRange();
     console.log('Date pickers updated:', this.startDate, this.endDate);
   }
 
   private validateDates() {
-    // Check if startDate and endDate are valid
     const start = new Date(this.startDate);
     const end = new Date(this.endDate);
 
     if (!(start instanceof Date) || isNaN(start.getTime())) {
       console.error('Invalid startDate:', this.startDate);
-      this.startDate = '2020-01-01'; // Reset to default
+      this.startDate = '2020-01-01';
     }
     if (!(end instanceof Date) || isNaN(end.getTime())) {
       console.error('Invalid endDate:', this.endDate);
-      this.endDate = new Date().toISOString().split('T')[0]; // Reset to today's date
+      this.endDate = new Date().toISOString().split('T')[0];
     }
   }
 

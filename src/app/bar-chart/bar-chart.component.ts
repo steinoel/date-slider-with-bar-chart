@@ -17,7 +17,6 @@ export class BarChartComponent implements OnChanges {
     month: string;
     count: number;
     color: string;
-    opacity: number;
   }[] = [];
   hoveredBar: { month: string; count: number; color: string } | null = null;
 
@@ -50,7 +49,6 @@ export class BarChartComponent implements OnChanges {
       monthCount[monthYear] = (monthCount[monthYear] || 0) + 1;
     });
 
-    // Create a list of months in the range with opacity settings
     const monthsInRange = this.getMonthsInRange(this.minDate, this.maxDate);
     this.chartData = monthsInRange.map((monthYear, index) => {
       const count = monthCount[monthYear] || 0;
@@ -58,11 +56,10 @@ export class BarChartComponent implements OnChanges {
         month: monthYear,
         count: count,
         color: this.getColor(index),
-        opacity: count > 0 ? 1 : 0.3, // Set opacity based on count
       };
     });
 
-    this.maxCount = Math.max(...Object.values(monthCount), 1); // Prevent division by zero
+    this.maxCount = Math.max(...Object.values(monthCount), 1);
 
     this.chartData.sort((a, b) => {
       const [yearA, monthA] = a.month.split('-').map(Number);
@@ -71,7 +68,6 @@ export class BarChartComponent implements OnChanges {
     });
   }
 
-  // Function to get all month-year pairs between two dates
   private getMonthsInRange(start: Date, end: Date): string[] {
     const months: string[] = [];
     const startYear = start.getFullYear();
