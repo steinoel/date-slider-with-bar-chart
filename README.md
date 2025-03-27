@@ -32,7 +32,7 @@ src/
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/steinoel/date-slider-with-bar-chart.git
    cd date-slider-with-bar-chart
    ```
 
